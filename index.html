@@ -8,7 +8,351 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-  <link rel="stylesheet" href="/assets/style.css" />
+  <!-- <link rel="stylesheet" href="/assets/style.css" /> -->
+   <style>
+    html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  /*========== Ukuran Header ==========*/
+  --header-height: 3.5rem; /* Tinggi header */
+  --nav-width: auto; /* Lebar navbar */
+
+  /*========== Warna ==========*/
+  --first-color: #6923d0; /* Warna utama */
+  --first-color-light: #f4f0fa; /* Warna utama yang lebih terang */
+  --title-color: #19181b; /* Warna untuk judul */
+  --text-color: #ffffff; /* Warna teks utama */
+  --text-color-light: #a5a1aa; /* Warna teks yang lebih terang */
+  --body-color: #f9f6fd; /* Warna latar belakang */
+  --navbar-color: #000000; /* Warna kontainer */
+
+  /*========== Font dan Tipografi ==========*/
+  --body-font: 'Poppins', sans-serif; /* Jenis font untuk body */
+  --normal-font-size: 1rem; /* Ukuran font normal */
+  --small-font-size: 0.875rem; /* Ukuran font kecil */
+  --smaller-font-size: 0.75rem; /* Ukuran font lebih kecil */
+
+  /*========== Berat Font ==========*/
+  --font-medium: 500; /* Berat font medium */
+  --font-semi-bold: 600; /* Berat font semi-bold */
+
+  /*========== Z-index ==========*/
+  --z-fixed: 100; /* Z-index untuk elemen tetap */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+}
+p {
+  font-family: var(--body-font);
+  color: var(--text-color);
+}
+
+h1 {
+  font-family: var(--body-font);
+  color: var(--text-color);
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.side {
+  color: var(--text-color-light);
+  max-width: 50%;
+  width: 350px;
+  margin: 10px;
+  border-radius: 30px;
+  border: 1px solid white;
+  position: fixed;
+  z-index: 1000;
+}
+
+.aside {
+  padding: 40px 0px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.aside-content {
+  display: flex;
+  align-items: center;
+  text-align: end;
+  margin-bottom: 30px;
+}
+
+.aside-content h1,
+.aside-content p {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.aside img {
+  width: 200px; /* Mengatur lebar gambar menjadi 300px */
+  height: 200px;
+  border-radius: 30px;
+  margin-bottom: 30px;
+}
+
+.aside p:nth-of-type(2) {
+  font-size: 22px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.contact-list {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.contact-list a {
+  /* padding: 0px 10px; */
+  color: #888;
+  border: 1px solid #888;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  outline-offset: -2px;
+  transition: color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-list a:hover {
+  color: #00ff99;
+  border: 1px solid #00ff99;
+}
+
+header .aside button {
+  background-color: #00ff99;
+  border: none;
+  border-radius: 50px;
+  padding: 19px 55px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: background-color 0.3s ease;
+}
+
+header .aside button a {
+  text-decoration: none;
+  color: black; /* Warna teks default */
+  transition: color 0.3s ease; /* Menambahkan transisi pada warna teks */
+}
+
+header .aside button:hover {
+  background-color: #000000; /* Mengubah warna latar belakang saat hover */
+  outline: 2px solid white;
+  outline-offset: -2px;
+}
+
+header .aside button:hover a {
+  color: var(--text-color); /* Mengubah warna teks menjadi putih saat hover */
+}
+
+.aside p:nth-of-type(3) {
+  text-align: center;
+  color: #888;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+nav {
+  position: fixed; /* Navbar tetap */
+  right: 40px; /* Jarak dari kanan */
+  width: var(--nav-width); /* Menggunakan variabel lebar navbar */
+  padding: 1rem; /* Padding di dalam navbar */
+  border: 1px solid white;
+  z-index: var(--z-fixed);
+  transition: 0.4s;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column; /* Susun elemen navbar secara vertikal */
+  justify-content: center; /* Posisikan elemen secara vertikal di tengah */
+}
+
+/* Style untuk link di dalam navbar */
+nav a {
+  margin: 20px 5px;
+  text-decoration: none;
+  font-size: var(--normal-font-size); /* Menggunakan ukuran font dari :root */
+  color: var(--text-color); /* Menggunakan warna teks dari :root */
+  display: block;
+  transition: color 0.3s ease;
+}
+
+/* Efek hover untuk link */
+nav a:hover {
+  color: #00ff99;
+}
+
+nav a:hover::before {
+  box-shadow: 0 0 10px 5px rgba(0, 255, 153, 0.8), 0 0 30px 15px rgba(0, 255, 153, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+main {
+  padding: 25px 30px;
+  width: 900px;
+  margin-left: 400px;
+}
+
+.main-intro {
+  border: 1px solid #888;
+  color: var(--body-color);
+  display: inline-flex; /* Menggunakan inline-flex agar menyesuaikan dengan konten */
+  font-size: 15px;
+  gap: 10px; /* Jarak antar elemen di dalam flex container */
+  align-items: center; /* Menyelaraskan item secara vertikal */
+  padding: 10px; /* Padding untuk menambah ruang di dalam pembungkus */
+  border-radius: 30px; /* Membulatkan sudut */
+  margin: 0 0 30px; /* Margin bawah untuk jarak dengan elemen lain */
+}
+
+.one {
+  padding: 50px 0;
+}
+
+.two {
+  padding: 50px 0;
+}
+
+.tree {
+  padding: 50px 0;
+}
+
+.greeting {
+  font-size: 78px;
+  line-height: 90px;
+  margin: 0px 0px 30px;
+}
+
+.about-journey {
+  font-size: 18px;
+  width: 95%;
+  margin: 0px 0px 20px;
+}
+
+.greeting-about {
+  font-size: 48px;
+  line-height: 60px;
+  margin: 0px 0px 30px;
+}
+
+.about-exp {
+  display: flex;
+  padding: 0px 0px 100px 0px;
+  justify-content: space-evenly;
+}
+
+.about-exp p:nth-of-type(1) {
+  font-size: 72px;
+  color: #00ff99;
+}
+
+main p:nth-of-type(4) {
+  font-size: 18px;
+  line-height: 25px;
+  max-width: 85%;
+  margin: 0px 0px 30px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: end;
+  margin-right: 40px;
+}
+
+.logo-container img {
+  position: absolute;
+  margin-top: 60px;
+  margin-right: 68px;
+}
+
+.rotating-text {
+  animation: rotate 10s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+text {
+  font-family: Arial, sans-serif;
+}
+
+/* responsive  */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    width: 100%; /* Kontainer penuh lebar layar */
+    border: none;
+    /* height: 20000px;  */
+  }
+
+  .side {
+    display: flex;
+    position: relative; /* Menghilangkan position: fixed */
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto; /* Biar ada margin otomatis atas dan bawah */
+    max-width: 100%; /* Penuhi layar saat kecil */
+    width: 90%; /* Lebar hampir penuh, tapi tidak menempel di pinggir */
+    left: 0;
+    top: 0;
+    height: auto;
+    padding: 20px;
+    border: 2px solid white; /* Misal ingin ada border */
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+  nav {
+    background-color: #00000033;
+    backdrop-filter: blur(5px);
+    margin: 40px 0px;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 500px;
+    bottom: 0;
+    z-index: 999;
+  }
+
+  main {
+    margin: 0;
+    width: 100%; /* Penuh lebar layar */
+    padding: 20px; /* Menambahkan padding agar tidak terlalu mepet */
+  }
+}
+
+   </style>
   <body class="container">
     <!-- Header -->
     <header class="side">
