@@ -1,0 +1,9 @@
+runtime: nodejs   # Ganti dengan runtime yang sesuai, jika Anda menggunakan bahasa lain
+entrypoint: gunicorn -b :$PORT app:app
+
+handlers:
+  - url: /static
+    static_dir: assets/
+  - url: /.*  # Semua URL lainnya akan diteruskan ke file index.html
+    static_files: index.html
+    upload: index.html
