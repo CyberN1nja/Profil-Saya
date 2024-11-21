@@ -1,4 +1,4 @@
-runtime: nodejs   # Ganti dengan runtime yang sesuai, jika Anda menggunakan bahasa lain
+runtime: python39   # Ganti dengan runtime yang sesuai, jika Anda menggunakan bahasa lain
 entrypoint: gunicorn -b :$PORT app:app
 
 handlers:
